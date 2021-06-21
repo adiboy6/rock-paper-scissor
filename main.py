@@ -78,8 +78,11 @@ if __name__ == "__main__":
                     break
             if exit:
                 break
-        save_game = input("Save Game?\n[Y]es\n[N]o\n")[0].lower()
+
+        """Save Game"""
+        save_game = input("Save Game?\n[Y]es\n[N]o\n")[0].lower()        
         if save_game == 'y':
+            file_name = input("Enter the file name:")
             output={
                 "name":player_name,
                 "game":{
@@ -89,8 +92,7 @@ if __name__ == "__main__":
                     "draw":played-(p1_won+cmp_won)
                 }
             }
-            print(json.dumps(output))
-            f = open("save_file.json", "w")
-            f.write(json.dumps(output))
+            f = open(file_name + ".json", "w")
+            f.write(json.dumps(output, indent = 1))
     else:                               #Exit
         print("Exiting game")
